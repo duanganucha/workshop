@@ -291,6 +291,7 @@
               <th rowspan="2">สูตรที่ควรเลือก</th>
               <th rowspan="2">ยาที่ควรเลือก</th>
               <th rowspan="2">กินกี่เม็ด</th>
+              <th rowspan="2">รวมเม็ด</th>
 
               <th rowspan="2">หมายเหตุ</th>
             </tr>
@@ -424,7 +425,7 @@
           const minWarning = doses.min > med.maxDaily ? "warning" : "";
           const midWarning = doses.mid > med.maxDaily ? "warning" : "";
           const maxWarning = doses.max > med.maxDaily ? "warning" : "";
-
+          console.log(med);
           tr.innerHTML = `
                     <td>${med.name}</td>
                     <td>${med.mkd.min || "-"}</td>
@@ -449,6 +450,9 @@
                     }</td>
                     <td>${matchingData ? matchingData.drugToChoose : "-"}</td>
                     <td>${matchingData ? matchingData.pillsToTake : "-"}</td>
+                    <td>${
+                      matchingData ? matchingData.pillsToTake * day : "-"
+                    }</td>
                     <td>${med.note}</td>
                 `;
 
