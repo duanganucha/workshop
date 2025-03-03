@@ -306,16 +306,50 @@
           </thead>
           <tbody id="drugTable"></tbody>
         </table>
+        <div style="padding: 5px; display: flex">
+          <table style="margin: 20px; flex: 3">
+            <tr>
+              <td>Pyrazinamide:</td>
+              <td colspan="1">CrCl < 30 ml/min: 25-35 mg/kg q 72-96 hr</td>
+            </tr>
+            <tr>
+              <td>Ethambutol :</td>
+              <td colspan="1">
+                CrCl 10-50 ml/min : q 24-36 hr 3days/week หรือ จันทร์ พุธ ศุกร์
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td colspan="1">CrCl < 10 ml/min : q 48 hr และ/หรือ ลดขนาดลง</td>
+            </tr>
+          </table>
+          <ul style="margin: 20px; flex: 2; color: green">
+            <li style="list-style-type: none">
+              ขนาดยาวัณโรคที่มีใช้ในโรงพยาบาลศรีสะเกษ
+            </li>
+            <li style="list-style-type: none">1. ISONIAZID TAB. 100 MG</li>
+            <li style="list-style-type: none">2. RIFAMPICIN CAP. 300 MG</li>
+            <li style="list-style-type: none">3. RIFAMPICIN CAP. 450 MG</li>
+            <li style="list-style-type: none">4. PYRAZINAMIDE TAB. 500 MG</li>
+            <li style="list-style-type: none">5. ETHAMBUTOL TAB. 400 MG</li>
+            <li style="list-style-type: none">6. ETHAMBUTOL TAB. 500 MG</li>
+          </ul>
+        </div>
       </div>
     </div>
 
-     <div style="color:black; padding:6px; border-radius:6px; blackgroud-color:blue;">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSduhUTuRtnIbLD0eHZqdHKXsnPsHcwyG8SbIt9_nbBc0sfyUA/viewform" >ตอบแบบสอบถามประเมินโปรแกรม</a>
+    <div
+      style="color: black; padding: 6px; border-radius: 6px; text-align: end"
+    >
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSduhUTuRtnIbLD0eHZqdHKXsnPsHcwyG8SbIt9_nbBc0sfyUA/viewform"
+        >ตอบแบบสอบถามประเมินโปรแกรม</a
+      >
     </div>
 
     <nav class="navbar">
       <a href="drug_cal อายุ < 15 ปี new.html" class="nav-link">อายุ < 15</a>
-      <a href="drug_cal อายุ > 15 ปี new2.html" class="nav-link">อายุ > 15 ปี</a>
+      <a href="drug_cal อายุ > 15 ปี new.html" class="nav-link">อายุ > 15 ปี</a>
     </nav>
 
     <script>
@@ -342,7 +376,7 @@
           name: "Ethambutol",
           mkd: { min: 15, mid: 20, max: 20 },
           maxDaily: 1200,
-          note: "ที่หักครึ่ลแล้วต้องทิ้ง ไม่สามารถรับประทานต่อได้",
+          note: "หักครึ่งแล้วต้องทิ้ง ไม่สามารถรับประทานต่อได้",
         },
         {
           name: "Levofloxacin",
@@ -385,7 +419,7 @@
               return result;
             }, {})
           : null;
-        console.log(maxWeightsByDrug);
+        // console.log(maxWeightsByDrug);
 
         medications.forEach((med) => {
           const tr = document.createElement("tr");
@@ -402,7 +436,6 @@
             max: med.mkd.max ? (med.mkd.max * weight).toFixed(0) : "-",
             // amount_drug: med.mkd.max ? (med.mkd.max * weight).toFixed(0) : "-",
           };
-          console.log("min : " + med.mkd);
 
           // check max dose for each drug ให้เลือกจากน้ำหนักมากที่สุดในตาราง
           const _maxWeightsByDrug = maxWeightsByDrug
@@ -429,7 +462,7 @@
           const minWarning = doses.min > med.maxDaily ? "warning" : "";
           const midWarning = doses.mid > med.maxDaily ? "warning" : "";
           const maxWarning = doses.max > med.maxDaily ? "warning" : "";
-          console.log(med);
+
           tr.innerHTML = `
                     <td>${med.name}</td>
                     <td>${med.mkd.min || "-"}</td>
